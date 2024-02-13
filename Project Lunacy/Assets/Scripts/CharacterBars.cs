@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
 
 public class CharacterBars : MonoBehaviour
 {
@@ -21,22 +20,35 @@ public class CharacterBars : MonoBehaviour
     [SerializeField] private Text willpowerText;
     [SerializeField] private Text sanityText;
 
-    // Start is called before the first frame update
+    private Color vitalityColour;
+    private Color willpowerColour;
+    private Color sanityColour;
+
+    private float stepTimeSeconds = 1;
+    private bool isWaiting = false;
+
     void Start()
     {
-        
+        vitalityColour = vitalityText.color;
+        willpowerColour = willpowerText.color;
+        sanityColour = sanityText.color;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (!isWaiting)
         {
-            RandomEffect();
+            StartCoroutine(AutoPlay());
         }
 
         vitalityText.text = "Vitality: " + vitalityValue;
-        willpowerText.text = "WIllpower: " + willpowerValue;
+        willpowerText.text = "Willpower: " + willpowerValue;
         sanityText.text = "Sanity: " + sanityValue;
+
+        if (vitalityValue <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void RandomEffect()
@@ -50,27 +62,28 @@ public class CharacterBars : MonoBehaviour
 
     public void ChangeConstitutionValue(ConsitutionType type, int value)
     {
-        string change;
-        
         switch(type)
         {
             case ConsitutionType.Vitality:
-                change = (value > 0) ? "Vitality Increased" : "Vitality Decreased";
-                Debug.Log(change);
+                vitalityText.color = (value > 0) ? Color.white : Color.black;
+                willpowerText.color = willpowerColour;
+                sanityText.color = sanityColour;
                 
                 vitalityValue = FindNewValue(vitalityValue, value);
                 break;
 
             case ConsitutionType.Willpower:
-                change = (value > 0) ? "Willpower Increased" : "Willpower Decreased";
-                Debug.Log(change);
+                vitalityText.color = vitalityColour;
+                willpowerText.color = (value > 0) ? Color.white : Color.black;
+                sanityText.color = sanityColour;
 
                 willpowerValue = FindNewValue(willpowerValue, value);
                 break;
 
             case ConsitutionType.Sanity:
-                change = (value > 0) ? "Sanity Increased" : "Sanity Decreased";
-                Debug.Log(change);
+                vitalityText.color = vitalityColour;
+                willpowerText.color = willpowerColour;
+                sanityText.color = (value > 0) ? Color.white : Color.black;
 
                 sanityValue = FindNewValue(sanityValue, value);
                 break;
@@ -94,5 +107,15 @@ public class CharacterBars : MonoBehaviour
         }
 
         return output;
+    }
+
+    IEnumerator AutoPlay()
+    {
+        isWaiting = true;
+        RandomEffect();
+
+        yield return new WaitForSeconds(stepTimeSeconds);
+
+        isWaiting = false;
     }
 }
