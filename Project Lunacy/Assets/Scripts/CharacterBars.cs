@@ -3,15 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterBars : MonoBehaviour
+public class CharacterBars : JourneyLogic
 {
-    public enum ConsitutionType
-    {
-        Vitality,
-        Willpower,
-        Sanity
-    }
-
     private int vitalityValue = 100;
     private int willpowerValue = 100;
     private int sanityValue = 100;
@@ -24,8 +17,7 @@ public class CharacterBars : MonoBehaviour
     private Color willpowerColour;
     private Color sanityColour;
 
-    private float stepTimeSeconds = 1;
-    private bool isWaiting = false;
+    private uint currentStepCount;
 
     void Start()
     {
@@ -36,9 +28,9 @@ public class CharacterBars : MonoBehaviour
 
     void Update()
     {
-        if (!isWaiting)
+        if (CheckStepCount())
         {
-            StartCoroutine(AutoPlay());
+            RandomEffect();
         }
 
         vitalityText.text = "Vitality: " + vitalityValue;
@@ -47,20 +39,59 @@ public class CharacterBars : MonoBehaviour
 
         if (vitalityValue <= 0)
         {
+            Debug.Log(gameObject.name + " lasted " + stepCountStatic + " steps");
+
             Destroy(gameObject);
         }
+    }
+
+    private bool CheckStepCount()
+    {
+        if (stepCountStatic >= currentStepCount + 3)
+        {
+            currentStepCount = stepCountStatic; //Aligns it with current
+            return true;
+        }
+
+        if (stepCountStatic >= currentStepCount + 1) //Resets text colour after one step
+        {
+            vitalityText.color = vitalityColour;
+            willpowerText.color = willpowerColour;
+            sanityText.color = sanityColour;
+        }
+
+        return false;
     }
 
     private void RandomEffect()
     {
         ConsitutionType randomType = (ConsitutionType)Random.Range(0, 3);
         int multiplier = Random.Range(0, 2) * 2 - 1; //Random positive or negative
-        int randomValue = Random.Range(0, 4) * 15 * multiplier;
+        int randomValue = Random.Range(1, 4) * 15 * multiplier;
 
-        ChangeConstitutionValue(randomType, randomValue);
+        SetConstitutionValue(randomType, randomValue);
     }
 
-    public void ChangeConstitutionValue(ConsitutionType type, int value)
+    public int GetConstitutionValue(ConsitutionType type)
+    {
+        switch(type)
+        {
+            case ConsitutionType.Vitality:
+                return vitalityValue;
+
+            case ConsitutionType.Willpower:
+                return willpowerValue;
+
+            case ConsitutionType.Sanity:
+                return sanityValue;
+
+            default:
+                Debug.LogError("Invalid input for GetConstitutionType. Debug immediately!");
+                return 0;
+        }
+    }
+
+    public void SetConstitutionValue(ConsitutionType type, int value)
     {
         switch(type)
         {
@@ -89,7 +120,7 @@ public class CharacterBars : MonoBehaviour
                 break;
 
             default:
-                Debug.LogError("Invalid input for ChangeConstitutionValue. Debug immediately!");
+                Debug.LogError("Invalid input for SetConstitutionValue. Debug immediately!");
                 break;
         }
     }
@@ -107,15 +138,5 @@ public class CharacterBars : MonoBehaviour
         }
 
         return output;
-    }
-
-    IEnumerator AutoPlay()
-    {
-        isWaiting = true;
-        RandomEffect();
-
-        yield return new WaitForSeconds(stepTimeSeconds);
-
-        isWaiting = false;
     }
 }
