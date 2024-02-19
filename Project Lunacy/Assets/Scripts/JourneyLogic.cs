@@ -65,10 +65,16 @@ public class JourneyLogic : MonoBehaviour
 
         foreach (var button in choiceButtons)
         {
-            button.enabled = false;
+            button.gameObject.SetActive(false);
         }
 
+        for (int i = 0; i < journeyEvent.choiceList.Count; i++)
+        {
+            GameObject activeButton = choiceButtons[i].gameObject;
 
+            activeButton.SetActive(true);
+            activeButton.GetComponentInChildren<Text>().text = journeyEvent.choiceList[i].choiceName;
+        }
     }
 
     IEnumerator AutoPlay()

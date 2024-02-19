@@ -28,3 +28,6 @@ MonoBehaviour:
   - choiceName: Imagine kissing him
     effectType: 0
     effectAmount: 100
+  - choiceName: Reconsider life
+    effectType: 0
+    effectAmount: -100

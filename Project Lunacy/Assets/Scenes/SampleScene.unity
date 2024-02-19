@@ -183,7 +183,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 69
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -263,7 +263,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 69
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -1090,10 +1090,16 @@ MonoBehaviour:
   stepTimeSeconds: 1
   eventNameText: {fileID: 1304297959}
   descriptionText: {fileID: 386919369}
-  choiceButtons: []
+  choiceButtons:
+  - {fileID: 570811247}
+  - {fileID: 2025774383}
+  - {fileID: 233507308}
+  - {fileID: 1430565275}
   activeEvents:
-  - {fileID: 11400000, guid: 561286f4530a1bd4697204d0e6917d0e, type: 2}
-  - {fileID: 11400000, guid: 12ef6f127392d3c418cf6453bec3b477, type: 2}
+  - {fileID: 11400000, guid: 6deda25d944047a4eb25bb608f487874, type: 2}
+  - {fileID: 11400000, guid: 435794d027a7a5c4681b456926e39259, type: 2}
+  - {fileID: 11400000, guid: 860c4c346a669564aa8fccdb50c0f5cd, type: 2}
+  - {fileID: 11400000, guid: a23120f358e1a034a901a6997441fb55, type: 2}
 --- !u!1 &1085115414
 GameObject:
   m_ObjectHideFlags: 0
@@ -1298,7 +1304,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 69
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -1926,7 +1932,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 69
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
