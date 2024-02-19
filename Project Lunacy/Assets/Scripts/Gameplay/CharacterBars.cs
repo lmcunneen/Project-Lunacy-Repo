@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterBars : MonoBehaviour
+public class CharacterBars : JourneyScript
 {
-    /*private int vitalityValue = 100;
+    private int vitalityValue = 100;
     private int willpowerValue = 100;
     private int sanityValue = 100;
 
@@ -46,6 +46,8 @@ public class CharacterBars : MonoBehaviour
     {
         if (stepCountStatic >= currentStepCount + 1) //Resets text colour after one step
         {
+            RandomEffect();
+            
             vitalityText.color = vitalityColour;
             willpowerText.color = willpowerColour;
             sanityText.color = sanityColour;
@@ -137,5 +139,5 @@ public class CharacterBars : MonoBehaviour
         }
 
         return output;
-    }*/
+    }
 }

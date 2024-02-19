@@ -16,7 +16,7 @@ public class ChoiceResult
     public string resultName;
     [TextArea(10, 30)]
     public string resultDescription;
-    public JourneyLogic.ConsitutionType effectType;
+    public JourneyScript.ConsitutionType effectType;
     public int effectAmount;
 }
 

@@ -3,19 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class JourneyLogic : MonoBehaviour
+public class JourneyLogic : JourneyScript
 {
-    public enum ConsitutionType
-    {
-        Vitality,
-        Willpower,
-        Sanity,
-        None
-    }
-
     //STATIC VARIABLES:
-    public static List<CharacterBars> activeCharacters = new List<CharacterBars>();
-    public uint stepCountStatic;
+    [SerializeField] private List<CharacterBars> activeCharacters = new List<CharacterBars>();
+    [SerializeField] private uint stepCountDisplay;
     
     [SerializeField] private float stepTimeSeconds = 1f;
 
@@ -29,7 +21,7 @@ public class JourneyLogic : MonoBehaviour
     private bool isWaiting = false;
     private bool eventIsChosen = false;
 
-    void Start()
+    void Awake()
     {
         eventPanel.SetActive(false);
         
@@ -37,6 +29,10 @@ public class JourneyLogic : MonoBehaviour
         {
             activeCharacters.Add(character);
         }
+
+        activeCharactersStatic = activeCharacters;
+
+        Debug.Log(activeCharactersStatic.Count);
     }
 
     void Update()
@@ -100,6 +96,7 @@ public class JourneyLogic : MonoBehaviour
     {
         isWaiting = true;
 
+        stepCountDisplay++;
         stepCountStatic++;
 
         yield return new WaitForSeconds(stepTimeSeconds);
