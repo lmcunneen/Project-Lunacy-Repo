@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterBars : JourneyLogic
+public class CharacterBars : MonoBehaviour
 {
-    private int vitalityValue = 100;
+    /*private int vitalityValue = 100;
     private int willpowerValue = 100;
     private int sanityValue = 100;
 
@@ -137,5 +137,5 @@ public class CharacterBars : JourneyLogic
         }
 
         return output;
-    }
+    }*/
 }

@@ -341,6 +341,7 @@ GameObject:
   - component: {fileID: 233507310}
   - component: {fileID: 233507309}
   - component: {fileID: 233507308}
+  - component: {fileID: 233507311}
   m_Layer: 5
   m_Name: Choice (3)
   m_TagString: Untagged
@@ -412,7 +413,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 233507309}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 233507311}
+        m_TargetAssemblyTypeName: ChoiceButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &233507309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,6 +464,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233507306}
   m_CullTransparentMesh: 1
+--- !u!114 &233507311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233507306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d088794bb9cf51d4da8708f4709124cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadedChoiceData:
+    choiceName: 
+    results: []
 --- !u!224 &271329354 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3729361140198838935, guid: b4fae77b64c89c94693d69232038bd5f, type: 3}
@@ -832,6 +860,7 @@ GameObject:
   - component: {fileID: 570811249}
   - component: {fileID: 570811248}
   - component: {fileID: 570811247}
+  - component: {fileID: 570811250}
   m_Layer: 5
   m_Name: Choice (1)
   m_TagString: Untagged
@@ -903,7 +932,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 570811248}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 570811250}
+        m_TargetAssemblyTypeName: ChoiceButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &570811248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -942,6 +983,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 570811245}
   m_CullTransparentMesh: 1
+--- !u!114 &570811250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570811245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d088794bb9cf51d4da8708f4709124cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadedChoiceData:
+    choiceName: 
+    results: []
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,12 +1110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b950bd9cd8d56419f8129eb0a49d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stepTimeSeconds: 1
-  eventNameText: {fileID: 0}
-  descriptionText: {fileID: 0}
-  choiceButtons: []
-  activeEvents: []
-  activeCharactersReference: []
 --- !u!4 &791985206
 Transform:
   m_ObjectHideFlags: 0
@@ -1087,7 +1137,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa55989cc8f18040bf665e320352844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stepCountStatic: 0
   stepTimeSeconds: 1
+  eventPanel: {fileID: 212578691}
   eventNameText: {fileID: 1304297959}
   descriptionText: {fileID: 386919369}
   choiceButtons:
@@ -1416,6 +1468,7 @@ GameObject:
   - component: {fileID: 1430565277}
   - component: {fileID: 1430565276}
   - component: {fileID: 1430565275}
+  - component: {fileID: 1430565278}
   m_Layer: 5
   m_Name: Choice (4)
   m_TagString: Untagged
@@ -1487,7 +1540,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1430565276}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1430565278}
+        m_TargetAssemblyTypeName: ChoiceButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1430565276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1526,6 +1591,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430565273}
   m_CullTransparentMesh: 1
+--- !u!114 &1430565278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430565273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d088794bb9cf51d4da8708f4709124cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadedChoiceData:
+    choiceName: 
+    results: []
 --- !u!1001 &1588824644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1964,6 +2044,7 @@ GameObject:
   - component: {fileID: 2025774385}
   - component: {fileID: 2025774384}
   - component: {fileID: 2025774383}
+  - component: {fileID: 2025774386}
   m_Layer: 5
   m_Name: Choice (2)
   m_TagString: Untagged
@@ -2035,7 +2116,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2025774384}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2025774386}
+        m_TargetAssemblyTypeName: ChoiceButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2025774384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2074,6 +2167,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2025774381}
   m_CullTransparentMesh: 1
+--- !u!114 &2025774386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025774381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d088794bb9cf51d4da8708f4709124cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadedChoiceData:
+    choiceName: 
+    results: []
 --- !u!1001 &3729361140871165154
 PrefabInstance:
   m_ObjectHideFlags: 0

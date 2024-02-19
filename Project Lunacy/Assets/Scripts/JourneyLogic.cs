@@ -15,11 +15,12 @@ public class JourneyLogic : MonoBehaviour
 
     //STATIC VARIABLES:
     public static List<CharacterBars> activeCharacters = new List<CharacterBars>();
-    public static uint stepCountStatic;
+    public uint stepCountStatic;
     
     [SerializeField] private float stepTimeSeconds = 1f;
 
     [Header("Event UI References")]
+    [SerializeField] private GameObject eventPanel;
     [SerializeField] private Text eventNameText;
     [SerializeField] private Text descriptionText;
     [SerializeField] private List<Button> choiceButtons = new();
@@ -30,6 +31,8 @@ public class JourneyLogic : MonoBehaviour
 
     void Start()
     {
+        eventPanel.SetActive(false);
+        
         foreach (var character in FindObjectsByType<CharacterBars>(FindObjectsSortMode.InstanceID))
         {
             activeCharacters.Add(character);
@@ -40,7 +43,7 @@ public class JourneyLogic : MonoBehaviour
     {
         if (!isWaiting)
         {
-            StartCoroutine(AutoPlay());
+            StartCoroutine(IncrementStep());
         }
 
         if (stepCountStatic % 5 != 0)
@@ -52,9 +55,13 @@ public class JourneyLogic : MonoBehaviour
         if (!eventIsChosen)
         {
             eventIsChosen = true;
+
+            eventPanel.SetActive(true);
             
             int randomIndex = Random.Range(0, activeEvents.Count);
             DisplayEvent(activeEvents[randomIndex]);
+
+            StopAllCoroutines();
         }
     }
 
@@ -71,13 +78,25 @@ public class JourneyLogic : MonoBehaviour
         for (int i = 0; i < journeyEvent.choiceList.Count; i++)
         {
             GameObject activeButton = choiceButtons[i].gameObject;
+            ChoiceData choiceData = journeyEvent.choiceList[i];
 
             activeButton.SetActive(true);
-            activeButton.GetComponentInChildren<Text>().text = journeyEvent.choiceList[i].choiceName;
+            activeButton.GetComponentInChildren<Text>().text = choiceData.choiceName;
+
+            activeButton.GetComponent<ChoiceButton>().SetButtonChoiceData(choiceData);
         }
     }
 
-    IEnumerator AutoPlay()
+    public void CloseEventTab(ChoiceData givenChoiceData)
+    {
+        eventPanel.SetActive(false);
+
+        StartCoroutine(IncrementStep());
+
+        //Will apply givenChoiceData here
+    }
+
+    IEnumerator IncrementStep()
     {
         isWaiting = true;
 

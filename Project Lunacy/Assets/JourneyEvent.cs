@@ -7,6 +7,15 @@ using UnityEngine;
 public class ChoiceData
 {
     public string choiceName;
+    public List<ChoiceResult> results;
+}
+
+[Serializable]
+public class ChoiceResult
+{
+    public string resultName;
+    [TextArea(10, 30)]
+    public string resultDescription;
     public JourneyLogic.ConsitutionType effectType;
     public int effectAmount;
 }
