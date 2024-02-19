@@ -28,10 +28,7 @@ public class CharacterBars : JourneyLogic
 
     void Update()
     {
-        if (CheckStepCount())
-        {
-            RandomEffect();
-        }
+        ChangeBarColours();
 
         vitalityText.text = "Vitality: " + vitalityValue;
         willpowerText.text = "Willpower: " + willpowerValue;
@@ -45,25 +42,17 @@ public class CharacterBars : JourneyLogic
         }
     }
 
-    private bool CheckStepCount()
+    private void ChangeBarColours()
     {
-        if (stepCountStatic >= currentStepCount + 3)
-        {
-            currentStepCount = stepCountStatic; //Aligns it with current
-            return true;
-        }
-
         if (stepCountStatic >= currentStepCount + 1) //Resets text colour after one step
         {
             vitalityText.color = vitalityColour;
             willpowerText.color = willpowerColour;
             sanityText.color = sanityColour;
         }
-
-        return false;
     }
 
-    private void RandomEffect()
+    private void RandomEffect() //Used for randomly simulating outcomes
     {
         ConsitutionType randomType = (ConsitutionType)Random.Range(0, 3);
         int multiplier = Random.Range(0, 2) * 2 - 1; //Random positive or negative
@@ -84,6 +73,10 @@ public class CharacterBars : JourneyLogic
 
             case ConsitutionType.Sanity:
                 return sanityValue;
+
+            case ConsitutionType.None:
+                Debug.LogWarning("The 'None' enum value was passed into GetConsitutionType. Debug if possible");
+                return 0;
 
             default:
                 Debug.LogError("Invalid input for GetConstitutionType. Debug immediately!");
@@ -119,10 +112,16 @@ public class CharacterBars : JourneyLogic
                 sanityValue = FindNewValue(sanityValue, value);
                 break;
 
+            case ConsitutionType.None: //Set nothing
+                Debug.Log("Nothing was set, as 'None' was passed into SetConsitutionValue");
+                break;
+
             default:
                 Debug.LogError("Invalid input for SetConstitutionValue. Debug immediately!");
                 break;
         }
+
+        currentStepCount = stepCountStatic; //Aligns it with current
     }
 
     private int FindNewValue(int currentValue, int add)

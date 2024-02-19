@@ -10,9 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6f980cdc143b01468a3868e16293d70, type: 3}
-  m_Name: ExampleEvent
+  m_Name: KissJackson
   m_EditorClassIdentifier: 
-  displayName: Falls over and dies
+  displayName: Kiss Jackson
+  description: 'You find a wild Jackson making his Unity Editor look like Unreal
+    Engine.
+
+
+    What do you do?'
   choiceList:
-  - effectType: 0
-    effectAmount: -100
+  - choiceName: Kiss him
+    effectType: 0
+    effectAmount: 100
+  - choiceName: Kiss him more
+    effectType: 0
+    effectAmount: 100
+  - choiceName: Imagine kissing him
+    effectType: 0
+    effectAmount: 100

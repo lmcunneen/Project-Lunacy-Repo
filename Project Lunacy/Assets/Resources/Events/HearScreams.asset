@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f980cdc143b01468a3868e16293d70, type: 3}
+  m_Name: HearScreams
+  m_EditorClassIdentifier: 
+  displayName: Distant Screams
+  description: 'Your party hears screams of an old woman over the crest of a stony
+    landslide.
+
+
+    What do you do?'
+  choiceList:
+  - choiceName: Follow the voice
+    effectType: 1
+    effectAmount: 20
+  - choiceName: Look for extra help
+    effectType: 1
+    effectAmount: -20
+  - choiceName: Run away
+    effectType: 1
+    effectAmount: -10

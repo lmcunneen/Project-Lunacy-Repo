@@ -6,13 +6,16 @@ using UnityEngine;
 [Serializable]
 public class ChoiceData
 {
-    public CharacterBars.ConsitutionType effectType;
+    public string choiceName;
+    public JourneyLogic.ConsitutionType effectType;
     public int effectAmount;
 }
 
 [CreateAssetMenu(fileName = "EventName", menuName = "Project Lunacy/Journey Event", order = 1)]
 public class JourneyEvent : ScriptableObject
 {
-    [SerializeField] private string displayName;
-    [SerializeField] private List<ChoiceData> choiceList;
+    public string displayName;
+    [TextArea(10,30)]
+    public string description;
+    public List<ChoiceData> choiceList;
 }
