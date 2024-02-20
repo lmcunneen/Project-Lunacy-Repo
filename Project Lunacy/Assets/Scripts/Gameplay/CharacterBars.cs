@@ -19,6 +19,8 @@ public class CharacterBars : JourneyScript
 
     private uint currentStepCount;
 
+    private string characterName;
+
     void Start()
     {
         vitalityColour = vitalityText.color;
@@ -139,5 +141,11 @@ public class CharacterBars : JourneyScript
         }
 
         return output;
+    }
+
+    public void SetName(string givenName)
+    {
+        characterName = givenName;
+        gameObject.name = characterName + " (Character)";
     }
 }

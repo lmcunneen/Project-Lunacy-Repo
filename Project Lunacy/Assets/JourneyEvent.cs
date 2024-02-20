@@ -17,6 +17,7 @@ public class ChoiceResult
     [TextArea(10, 30)]
     public string resultDescription;
     public JourneyScript.ConsitutionType effectType;
+    [Range(-100, 100)]
     public int effectAmount;
 }
 

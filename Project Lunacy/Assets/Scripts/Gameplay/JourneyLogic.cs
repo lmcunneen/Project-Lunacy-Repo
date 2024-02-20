@@ -29,10 +29,6 @@ public class JourneyLogic : JourneyScript
         {
             activeCharacters.Add(character);
         }
-
-        activeCharactersStatic = activeCharacters;
-
-        Debug.Log(activeCharactersStatic.Count);
     }
 
     void Update()
