@@ -10,9 +10,9 @@ public class PartyManager : JourneyScript
     [SerializeField] private List<CharacterBars> activeCharactersDisplay;
 
     private List<string> names = new List<string>
-        { "Jackson", "Declan", "Rhys", "Casti", "Joseph", "Mitchell", "Neo", "Elias", "Daniel", "Matthew", "Natalie", "Vicki", "Roger",
-          "David", "Jason", "Casper", "Connor", "Ashton", "Mateo", "Mars", "Pheobe", "Hayley", "Callum", "Georgia", "James", "Jet", 
-          "John", "Paul", "George", "Ringo", "Thomas", "Pete", "Billy", "Tai", "Noah", "Marcus", "Alex", "Josh", "Jack", "Torr", "Lerm"};
+        { "Jackson", "Declan", "Rhys", "Castiel", "Joseph", "Mitchell", "Neo", "Elias", "Daniel", "Matthew", "Natalie", "Vicki", "Roger",
+          "David", "Jason", "Casper", "Connor", "Ashton", "Mateo", "Mars", "Pheobe", "Hayley", "Callum", "Georgia", "James", "Jet", "John", 
+          "Paul", "George", "Ringo", "Thomas", "Pete", "Billy", "Tai", "Noah", "Marcus", "Alex", "Josh", "Jack", "Torr", "Elliot", "Lerm"};
 
     void Start()
     {

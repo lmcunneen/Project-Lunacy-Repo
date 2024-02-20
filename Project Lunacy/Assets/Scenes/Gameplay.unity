@@ -1033,8 +1033,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa55989cc8f18040bf665e320352844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeCharacters: []
   stepCountDisplay: 0
+  activeCharacters: []
   stepTimeSeconds: 1
   eventPanel: {fileID: 212578691}
   eventNameText: {fileID: 1304297959}
@@ -1048,7 +1048,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6deda25d944047a4eb25bb608f487874, type: 2}
   - {fileID: 11400000, guid: 435794d027a7a5c4681b456926e39259, type: 2}
   - {fileID: 11400000, guid: 860c4c346a669564aa8fccdb50c0f5cd, type: 2}
-  - {fileID: 11400000, guid: a23120f358e1a034a901a6997441fb55, type: 2}
+  - {fileID: 11400000, guid: afb5d1c7d9f30c745879417856df16a0, type: 2}
 --- !u!1 &1085115414
 GameObject:
   m_ObjectHideFlags: 0

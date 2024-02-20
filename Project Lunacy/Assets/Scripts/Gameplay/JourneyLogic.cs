@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class JourneyLogic : JourneyScript
 {
+    [SerializeField] private uint stepCountDisplay;
+
     //STATIC VARIABLES:
     [SerializeField] private List<CharacterBars> activeCharacters = new List<CharacterBars>();
-    [SerializeField] private uint stepCountDisplay;
     
     [SerializeField] private float stepTimeSeconds = 1f;
 
