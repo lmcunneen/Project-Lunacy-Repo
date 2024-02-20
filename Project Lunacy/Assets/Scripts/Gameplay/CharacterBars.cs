@@ -9,6 +9,7 @@ public class CharacterBars : JourneyScript
     private int willpowerValue = 100;
     private int sanityValue = 100;
 
+    [SerializeField] private Text nameText;
     [SerializeField] private Text vitalityText;
     [SerializeField] private Text willpowerText;
     [SerializeField] private Text sanityText;
@@ -147,5 +148,6 @@ public class CharacterBars : JourneyScript
     {
         characterName = givenName;
         gameObject.name = characterName + " (Character)";
+        nameText.text = characterName;
     }
 }

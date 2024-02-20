@@ -32,7 +32,7 @@ public class PartyManager : JourneyScript
         GameObject newCharacter = Instantiate(characterPrefab);
         CharacterBars newCharacterBars = newCharacter.GetComponent<CharacterBars>();
 
-        newCharacter.transform.parent = characterTab.transform;
+        newCharacter.transform.SetParent(characterTab.transform);
         newCharacter.transform.localScale = characterPrefab.transform.localScale;
 
         GenerateName(newCharacterBars);

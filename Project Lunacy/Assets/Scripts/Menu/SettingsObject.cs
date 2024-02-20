@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class SettingsObject : MonoBehaviour
 {
-    public static uint numberOfPartyMembers = 20;
+    public static uint numberOfPartyMembers = 4;
 
     private void Start()
     {
-        //DontDestroyOnLoad(gameObject);
+        
     }
 
     public static void SaveToSettingsObject(uint partySizeRef)
