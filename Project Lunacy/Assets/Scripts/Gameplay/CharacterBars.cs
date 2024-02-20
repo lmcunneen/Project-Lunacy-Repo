@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class CharacterBars : JourneyScript
 {
@@ -21,12 +22,15 @@ public class CharacterBars : JourneyScript
     private uint currentStepCount;
 
     private string characterName;
+    private JSONExport jsonComponent;
 
     void Start()
     {
         vitalityColour = vitalityText.color;
         willpowerColour = willpowerText.color;
         sanityColour = sanityText.color;
+
+        jsonComponent = new();
     }
 
     void Update()
@@ -41,6 +45,8 @@ public class CharacterBars : JourneyScript
         {
             Debug.Log(gameObject.name + " lasted " + stepCountStatic + " steps");
 
+            jsonComponent.CommitToFile();
+
             Destroy(gameObject);
         }
     }
@@ -54,6 +60,8 @@ public class CharacterBars : JourneyScript
             vitalityText.color = vitalityColour;
             willpowerText.color = willpowerColour;
             sanityText.color = sanityColour;
+
+            jsonComponent.UpdateData(stepCountStatic, (uint)vitalityValue, (uint)willpowerValue, (uint)sanityValue);
         }
     }
 
