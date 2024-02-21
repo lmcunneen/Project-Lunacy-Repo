@@ -21,6 +21,7 @@ public class JourneyLogic : JourneyScript
     public List<JourneyEvent> activeEvents = new();
     private bool isWaiting = false;
     private bool eventIsChosen = false;
+    private bool isOccurrenceEvent = false;
 
     void Awake()
     {
@@ -86,10 +87,24 @@ public class JourneyLogic : JourneyScript
 
             activeButton.GetComponent<ChoiceButton>().SetButtonChoiceData(choiceData);
         }
+
+        if (journeyEvent.choiceList.Count == 1 && journeyEvent.choiceList[0].results.Count == 1) //If there's only one option and result, do the following...
+        {
+            isOccurrenceEvent = true;
+            Debug.Log(journeyEvent + " is detected as an Occurrence Event. If this is wrong, fix immediately!");
+        }
     }
 
     public void ChoiceResultEventTab(ChoiceData givenChoiceData)
     {
+        if (isOccurrenceEvent)
+        {
+            //Apply the effect here
+
+            CloseEventTab();
+            return;
+        }
+        
         if (givenChoiceData.results.Count < 1)
         {
             Debug.Log("No results for '" + givenChoiceData.choiceName + "', so event tab has closed");
