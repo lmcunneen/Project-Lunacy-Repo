@@ -25,12 +25,14 @@ MonoBehaviour:
     - resultName: Clear Path Forward!
       resultDescription: The traveller informs <Character> on exactly the way to
         go, cutting down on travel time.
+      resultChoiceText: Nice!
       effectType: 3
       effectAmount: 0
     - resultName: Decieved!
       resultDescription: As soon as the goods are given, the traveller shoots through
         the brush, with their mischevious cackling growing ever further than <Pronoun>
         can reach.
+      resultChoiceText: Dammit
       effectType: 3
       effectAmount: 0
   - choiceName: Decline the offer

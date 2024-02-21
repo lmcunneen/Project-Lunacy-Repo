@@ -4,18 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class ChoiceData
+public struct ChoiceData
 {
     public string choiceName;
     public List<ChoiceResult> results;
 }
 
 [Serializable]
-public class ChoiceResult
+public struct ChoiceResult
 {
     public string resultName;
     [TextArea(10, 30)]
     public string resultDescription;
+    public string resultChoiceText;
     public JourneyScript.ConsitutionType effectType;
     [Range(-100, 100)]
     public int effectAmount;

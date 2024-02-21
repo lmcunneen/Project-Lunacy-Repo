@@ -27,11 +27,13 @@ MonoBehaviour:
 
         <Character> dies
         doing this by the way. Good one genius...'
+      resultChoiceText: Oh well
       effectType: 0
       effectAmount: -100
     - resultName: Wait, it worked?
       resultDescription: "Huh, guess that actually worked out. \n\nI wouldn't try
         your luck again if I were you..."
+      resultChoiceText: Sally forth
       effectType: 0
       effectAmount: 20
   - choiceName: Leave it be

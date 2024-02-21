@@ -30,6 +30,14 @@ public class JourneyLogic : JourneyScript
         {
             activeCharacters.Add(character);
         }
+
+        foreach (var jEvent in activeEvents)
+        {
+            if (jEvent.choiceList.Count > 4)
+            {
+                Debug.LogError(jEvent + " has greater than four choices. Fix immediately!");
+            }
+        }
     }
 
     void Update()
@@ -80,13 +88,39 @@ public class JourneyLogic : JourneyScript
         }
     }
 
-    public void CloseEventTab(ChoiceData givenChoiceData)
+    public void ChoiceResultEventTab(ChoiceData givenChoiceData)
+    {
+        if (givenChoiceData.results.Count < 1)
+        {
+            Debug.Log("No results for '" + givenChoiceData.choiceName + "', so event tab has closed");
+            CloseEventTab();
+            return;
+        }
+        
+        int randomIndex = Random.Range(0, givenChoiceData.results.Count);
+        ChoiceResult result = givenChoiceData.results[randomIndex];
+
+        eventNameText.text = result.resultName;
+        descriptionText.text = result.resultDescription;
+
+        foreach (var button in choiceButtons)
+        {
+            button.gameObject.SetActive(false);
+        }
+
+        choiceButtons[0].gameObject.SetActive(true);
+
+        choiceButtons[0].GetComponentInChildren<Text>().text = result.resultChoiceText;
+        choiceButtons[0].GetComponent<ChoiceButton>().MakeCloseButton();
+
+        //Will apply result to characters here
+    }
+
+    public void CloseEventTab()
     {
         eventPanel.SetActive(false);
 
         StartCoroutine(IncrementStep());
-
-        //Will apply givenChoiceData here
     }
 
     IEnumerator IncrementStep()
