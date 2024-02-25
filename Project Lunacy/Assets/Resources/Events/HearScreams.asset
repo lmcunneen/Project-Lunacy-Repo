@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: HearScreams
   m_EditorClassIdentifier: 
   displayName: Distant Screams
+  eventSize: 3
   description: 'Your party hears screams of an old woman over the crest of a stony
     landslide.
 
@@ -20,11 +21,8 @@ MonoBehaviour:
     What do you do?'
   choiceList:
   - choiceName: Follow the voice
-    effectType: 1
-    effectAmount: 20
+    results: []
   - choiceName: Look for extra help
-    effectType: 1
-    effectAmount: -20
+    results: []
   - choiceName: Run away
-    effectType: 1
-    effectAmount: -10
+    results: []

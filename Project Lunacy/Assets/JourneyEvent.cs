@@ -25,7 +25,17 @@ public struct ChoiceResult
 [CreateAssetMenu(fileName = "EventName", menuName = "Project Lunacy/Journey Event", order = 1)]
 public class JourneyEvent : ScriptableObject
 {
+    public enum EventSize 
+    {
+        Solo,
+        Duo,
+        Trio,
+        Quartet,
+        All
+    }
+    
     public string displayName;
+    public EventSize eventSize;
     [TextArea(10,30)]
     public string description;
     public List<ChoiceData> choiceList;

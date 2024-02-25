@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f980cdc143b01468a3868e16293d70, type: 3}
+  m_Name: RestWatch
+  m_EditorClassIdentifier: 
+  displayName: Finding Rest
+  eventSize: 4
+  description: 'Whilst searching for an adequate place to rest, the party can only
+    muster a semi-secluded area for them to stay. It doesn''t feel safe, but it seems
+    to be the best they can get.
+
+
+    What should they do?'
+  choiceList:
+  - choiceName: Rest unprotected
+    results:
+    - resultName: Miraculously Safe!
+      resultDescription: The party was all safe during the night and feel well rested.
+      resultChoiceText: Continue
+      effectType: 1
+      effectAmount: 20
+    - resultName: Ransacked!
+      resultDescription: "<Character> comes to and finds many of things have been
+        taken whilst they were sleeping! \n\nThere's an air of regret that lingers
+        over the party."
+      resultChoiceText: Continue
+      effectType: 1
+      effectAmount: -30
+  - choiceName: Take guard shifts
+    results:
+    - resultName: All safe!
+      resultDescription: The party got through the night, albeit more tired than
+        ideal.
+      resultChoiceText: Continue
+      effectType: 1
+      effectAmount: -10
