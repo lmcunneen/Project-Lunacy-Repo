@@ -1035,6 +1035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stepCountDisplay: 0
   activeCharacters: []
+  activeEventCharacters: []
   stepTimeSeconds: 1
   eventPanel: {fileID: 212578691}
   eventNameText: {fileID: 1304297959}
@@ -1045,10 +1046,15 @@ MonoBehaviour:
   - {fileID: 233507308}
   - {fileID: 1430565275}
   activeEvents:
+  - {fileID: 11400000, guid: 5fe217215359cdd40b916e3fabcbc4af, type: 2}
   - {fileID: 11400000, guid: 6deda25d944047a4eb25bb608f487874, type: 2}
   - {fileID: 11400000, guid: 435794d027a7a5c4681b456926e39259, type: 2}
   - {fileID: 11400000, guid: 860c4c346a669564aa8fccdb50c0f5cd, type: 2}
+  - {fileID: 11400000, guid: 3d4e7854f10323e4cbfbc48de9f1372b, type: 2}
+  - {fileID: 11400000, guid: fa32397ad7c77b8428dba927d4ef0f46, type: 2}
   - {fileID: 11400000, guid: afb5d1c7d9f30c745879417856df16a0, type: 2}
+  - {fileID: 11400000, guid: f3c400ba6f15e1f4da691c2b77a6b811, type: 2}
+  - {fileID: 11400000, guid: 3f2dce77b1c89c040a54af028dbf067d, type: 2}
 --- !u!1 &1085115414
 GameObject:
   m_ObjectHideFlags: 0

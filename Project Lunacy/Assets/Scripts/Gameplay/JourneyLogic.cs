@@ -185,19 +185,19 @@ public class JourneyLogic : JourneyScript
         switch(givenEventSize)
         {
             case JourneyEvent.EventSize.Solo:
-                return ReturnRandomPartyList(1);
-
+                return ReturnRandomPartyList(1, false);
+                                             
             case JourneyEvent.EventSize.Duo:
-                return ReturnRandomPartyList(2);
-
-            case JourneyEvent.EventSize.Trio:
-                return ReturnRandomPartyList(3);
+                return ReturnRandomPartyList(2, false);
+                                             
+            case JourneyEvent.EventSize.Trio: 
+                return ReturnRandomPartyList(3, false);
 
             case JourneyEvent.EventSize.Quadrio:
-                return ReturnRandomPartyList(4);
+                return ReturnRandomPartyList(4, false);
 
             case JourneyEvent.EventSize.WholeParty:
-                return ReturnRandomPartyList(99);
+                return ReturnRandomPartyList(99, true);
 
             default:
                 Debug.LogError("Invalid Input for AssignCharactersToEvent. Debug immediately!");
@@ -205,9 +205,9 @@ public class JourneyLogic : JourneyScript
         }
     }
 
-    private List<CharacterBars> ReturnRandomPartyList(int amountOfPartyMembers)
+    private List<CharacterBars> ReturnRandomPartyList(int amountOfPartyMembers, bool isWholeParty)
     {
-        if (activeCharacters.Count < amountOfPartyMembers)
+        if (activeCharacters.Count < amountOfPartyMembers && !isWholeParty) //This doesn't change the event, only the participants. Fix whenever you get the chance
         {
             Debug.LogWarning("Chosen Event Size too large for current party! Resetting to One!");
             amountOfPartyMembers = 1;

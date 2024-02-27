@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f980cdc143b01468a3868e16293d70, type: 3}
   m_Name: WholePartyEvent
   m_EditorClassIdentifier: 
-  displayName: 
-  eventSize: 0
+  displayName: Whole Party Event
+  eventSize: 4
   description: 
-  choiceList: []
+  choiceList:
+  - choiceName: 
+    results: []
