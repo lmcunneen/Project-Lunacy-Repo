@@ -167,13 +167,15 @@ public class CharacterBars : JourneyScript
 
     private void RemoveFromActiveCharacters()
     {
-        if (journeyLogicComponent.activeCharacters.Find(item => this) != null)
+        Debug.Log("Removing " + gameObject.name + " from active list!");
+        
+        if (journeyLogicComponent.activeCharacters.Find(item => item == this) != null)
         {
             journeyLogicComponent.activeCharacters.Remove(this);
             return;
         }
         
-        if (journeyLogicComponent.activeEventCharacters.Find(item => this) != null)
+        if (journeyLogicComponent.activeEventCharacters.Find(item => item == this) != null)
         {
             journeyLogicComponent.activeEventCharacters.Remove(this);
             return;
