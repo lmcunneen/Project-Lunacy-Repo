@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
 
 public class CharacterBars : JourneyScript
 {
@@ -23,6 +22,7 @@ public class CharacterBars : JourneyScript
 
     private string characterName;
     private JSONExport jsonComponent;
+    private JourneyLogic journeyLogicComponent;
 
     void Start()
     {
@@ -31,6 +31,8 @@ public class CharacterBars : JourneyScript
         sanityColour = sanityText.color;
 
         jsonComponent = new();
+
+        journeyLogicComponent = FindObjectOfType<JourneyLogic>();
     }
 
     void Update()
@@ -44,6 +46,8 @@ public class CharacterBars : JourneyScript
         if (vitalityValue <= 0)
         {
             Debug.Log(gameObject.name + " lasted " + stepCountStatic + " steps");
+            
+            RemoveFromActiveCharacters();
 
             jsonComponent.CommitToFile();
 
@@ -157,5 +161,20 @@ public class CharacterBars : JourneyScript
         characterName = givenName;
         gameObject.name = characterName + " (Character)";
         nameText.text = characterName;
+    }
+
+    private void RemoveFromActiveCharacters()
+    {
+        if (journeyLogicComponent.activeCharacters.Find(item => this) != null)
+        {
+            journeyLogicComponent.activeCharacters.Remove(this);
+            return;
+        }
+        
+        if (journeyLogicComponent.activeEventCharacters.Find(item => this) != null)
+        {
+            journeyLogicComponent.activeEventCharacters.Remove(this);
+            return;
+        }
     }
 }

@@ -38,6 +38,22 @@ public class ApplyEventEffect : JourneyScript
                 }
 
                 break;
+
+            case EffectType.JourneyLength:
+                //Apply effect here
+                break;
+
+            case EffectType.AddNewCharacter:
+                //Add new Character here
+                break;
+
+            case EffectType.None:
+                Debug.Log("'None' input for ApplyTypeAndValue, so it's being skipped");
+                break;
+
+            default:
+                Debug.LogError("Invalid Input for ApplyTypeAndValue. Debug immediately!");
+                break;
         }
     }
 }

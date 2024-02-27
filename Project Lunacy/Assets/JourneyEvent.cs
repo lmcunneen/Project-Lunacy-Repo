@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public struct ChoiceData
+public class ChoiceData
 {
     public string choiceName;
-    public List<ChoiceResult> results;
+    public List<ChoiceResult> results = new List<ChoiceResult>(new ChoiceResult[1]);
 }
 
 [Serializable]

@@ -8,7 +8,7 @@ public class JourneyLogic : JourneyScript
     [SerializeField] private uint stepCountDisplay;
 
     //STATIC VARIABLES:
-    [SerializeField] private List<CharacterBars> activeCharacters = new List<CharacterBars>();
+    public List<CharacterBars> activeCharacters = new List<CharacterBars>();
     public List<CharacterBars> activeEventCharacters = new();
     
     [SerializeField] private float stepTimeSeconds = 1f;
@@ -31,7 +31,7 @@ public class JourneyLogic : JourneyScript
     private bool eventIsChosen = false;
     private bool isOccurrenceEvent = false;
 
-    void Awake()
+    void Start()
     {
         eventPanel.SetActive(false);
         
@@ -209,7 +209,8 @@ public class JourneyLogic : JourneyScript
     {
         if (activeCharacters.Count < amountOfPartyMembers)
         {
-            Debug.LogError("Chosen Event Size too large for current party! Debug immediately!");
+            Debug.LogWarning("Chosen Event Size too large for current party! Resetting to One!");
+            amountOfPartyMembers = 1;
         }
         
         List<CharacterBars> availableCharacters = activeCharacters;
@@ -217,6 +218,11 @@ public class JourneyLogic : JourneyScript
         
         for (int i = 0; i < amountOfPartyMembers; i++)
         {
+            if (activeCharacters.Count <= 0) //Safeguards the list from being checked if empty
+            {
+                return eventCharacters;
+            }
+            
             int randomCharacterIndex = Random.Range(0, availableCharacters.Count);
 
             eventCharacters.Add(activeCharacters[randomCharacterIndex]);
@@ -265,6 +271,19 @@ public class JourneyLogic : JourneyScript
     public void CloseEventTab()
     {
         eventPanel.SetActive(false);
+
+        List<CharacterBars> listReference = new();
+        
+        foreach (var character in activeEventCharacters)
+        {
+            activeCharacters.Add(character);
+            listReference.Add(character);
+        }
+
+        foreach (var character in listReference)
+        {
+            activeEventCharacters.Remove(character);
+        }
 
         StartCoroutine(IncrementStep());
     }

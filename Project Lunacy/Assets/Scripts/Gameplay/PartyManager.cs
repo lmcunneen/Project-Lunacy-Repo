@@ -15,7 +15,7 @@ public class PartyManager : JourneyScript
           "Paul", "George", "Ringo", "Thomas", "Pete", "Billy", "Tai", "Noah", "Marcus", "Alex", "Josh", "Jack", "Torr", "Elliot", "Cooper",
           "Martin", "Olivia", "Cynthia", "Stephen", "Corey", "Oscar", "Zac", "Tarek", "Aiden", "Jacob", "Atilla", "Konrad", "Ben", "Lerm"};
 
-    void Start()
+    void Awake()
     {
         for (int i = 0; i < SettingsObject.numberOfPartyMembers; i++)
         {
