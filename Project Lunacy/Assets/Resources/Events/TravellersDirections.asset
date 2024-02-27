@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: TravellersDirections
   m_EditorClassIdentifier: 
   displayName: Helping Hand..?
+  eventSize: 0
   description: 'As <Character> steps out to assess where to go, a wayward traveller
     approaches their cart.
 
@@ -26,14 +27,18 @@ MonoBehaviour:
       resultDescription: The traveller informs <Character> on exactly the way to
         go, cutting down on travel time.
       resultChoiceText: Nice!
-      effectType: 3
-      effectAmount: 0
+      effects:
+      - effectType: 3
+        effectAmount: -10
+      - effectType: 1
+        effectAmount: 20
     - resultName: Decieved!
       resultDescription: As soon as the goods are given, the traveller shoots through
         the brush, with their mischevious cackling growing ever further than <Pronoun>
         can reach.
       resultChoiceText: Dammit
-      effectType: 3
-      effectAmount: 0
+      effects:
+      - effectType: 1
+        effectAmount: -15
   - choiceName: Decline the offer
     results: []

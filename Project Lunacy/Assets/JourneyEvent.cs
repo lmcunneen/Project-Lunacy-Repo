@@ -36,8 +36,8 @@ public class JourneyEvent : ScriptableObject
         Solo,
         Duo,
         Trio,
-        Quartet,
-        All
+        Quadrio,
+        WholeParty
     }
     
     public string displayName;

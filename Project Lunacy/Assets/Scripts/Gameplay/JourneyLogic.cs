@@ -9,6 +9,7 @@ public class JourneyLogic : JourneyScript
 
     //STATIC VARIABLES:
     [SerializeField] private List<CharacterBars> activeCharacters = new List<CharacterBars>();
+    public List<CharacterBars> activeEventCharacters = new();
     
     [SerializeField] private float stepTimeSeconds = 1f;
 
@@ -19,6 +20,13 @@ public class JourneyLogic : JourneyScript
     [SerializeField] private List<Button> choiceButtons = new();
 
     public List<JourneyEvent> activeEvents = new();
+    
+    private List<JourneyEvent> activeSoloEvents = new();
+    private List<JourneyEvent> activeDuoEvents = new();
+    private List<JourneyEvent> activeTrioEvents = new();
+    private List<JourneyEvent> activeQuadrioEvents = new();
+    private List<JourneyEvent> activeWholePartyEvents = new();
+
     private bool isWaiting = false;
     private bool eventIsChosen = false;
     private bool isOccurrenceEvent = false;
@@ -38,6 +46,8 @@ public class JourneyLogic : JourneyScript
             {
                 Debug.LogError(jEvent + " has greater than four choices. Fix immediately!");
             }
+
+            SortJourneyEventType(jEvent);
         }
     }
 
@@ -59,11 +69,81 @@ public class JourneyLogic : JourneyScript
             eventIsChosen = true;
 
             eventPanel.SetActive(true);
-            
-            int randomIndex = Random.Range(0, activeEvents.Count);
-            DisplayEvent(activeEvents[randomIndex]);
+
+            JourneyEvent chosenEvent = GenerateRandomEvent();
+
+            DisplayEvent(chosenEvent);
 
             StopAllCoroutines();
+        }
+    }
+
+    private void SortJourneyEventType(JourneyEvent givenJourneyEvent)
+    {
+        JourneyEvent.EventSize givenEventSize = givenJourneyEvent.eventSize;
+        
+        switch(givenEventSize)
+        {
+            case JourneyEvent.EventSize.Solo:
+                activeSoloEvents.Add(givenJourneyEvent);
+                break;
+
+            case JourneyEvent.EventSize.Duo:
+                activeDuoEvents.Add(givenJourneyEvent);
+                break;
+
+            case JourneyEvent.EventSize.Trio:
+                activeTrioEvents.Add(givenJourneyEvent);
+                break;
+
+            case JourneyEvent.EventSize.Quadrio:
+                activeQuadrioEvents.Add(givenJourneyEvent);
+                break;
+
+            case JourneyEvent.EventSize.WholeParty:
+                activeWholePartyEvents.Add(givenJourneyEvent);
+                break;
+
+            default:
+                Debug.LogError("Invalid Input for SetJourneyEventType. Debug immediately!");
+                break;
+        }
+    }
+    
+    private JourneyEvent GenerateRandomEvent()
+    {
+        JourneyEvent.EventSize randomEventSize = (JourneyEvent.EventSize)Random.Range(0, 4);
+        List<JourneyEvent> randomEventPool = GetJourneyEventList(randomEventSize);
+
+        activeEventCharacters = AssignCharactersToEvent(randomEventSize);
+
+        int randomIndex = Random.Range(0, randomEventPool.Count);
+
+        return randomEventPool[randomIndex];
+    }
+
+    private List<JourneyEvent> GetJourneyEventList(JourneyEvent.EventSize givenEventSize)
+    {
+        switch(givenEventSize)
+        {
+            case JourneyEvent.EventSize.Solo:
+                return activeSoloEvents;
+
+            case JourneyEvent.EventSize.Duo:
+                return activeDuoEvents;
+            
+            case JourneyEvent.EventSize.Trio:
+                return activeTrioEvents;
+
+            case JourneyEvent.EventSize.Quadrio:
+                return activeQuadrioEvents;
+
+            case JourneyEvent.EventSize.WholeParty:
+                return activeWholePartyEvents;
+
+            default:
+                Debug.LogError("Invalid Input for GetJourneyEventList. Debug immediately!");
+                return null;
         }
     }
 
@@ -100,11 +180,57 @@ public class JourneyLogic : JourneyScript
         }
     }
 
+    private List<CharacterBars> AssignCharactersToEvent(JourneyEvent.EventSize givenEventSize)
+    {
+        switch(givenEventSize)
+        {
+            case JourneyEvent.EventSize.Solo:
+                return ReturnRandomPartyList(1);
+
+            case JourneyEvent.EventSize.Duo:
+                return ReturnRandomPartyList(2);
+
+            case JourneyEvent.EventSize.Trio:
+                return ReturnRandomPartyList(3);
+
+            case JourneyEvent.EventSize.Quadrio:
+                return ReturnRandomPartyList(4);
+
+            case JourneyEvent.EventSize.WholeParty:
+                return ReturnRandomPartyList(99);
+
+            default:
+                Debug.LogError("Invalid Input for AssignCharactersToEvent. Debug immediately!");
+                return null;
+        }
+    }
+
+    private List<CharacterBars> ReturnRandomPartyList(int amountOfPartyMembers)
+    {
+        if (activeCharacters.Count < amountOfPartyMembers)
+        {
+            Debug.LogError("Chosen Event Size too large for current party! Debug immediately!");
+        }
+        
+        List<CharacterBars> availableCharacters = activeCharacters;
+        List<CharacterBars> eventCharacters = new();
+        
+        for (int i = 0; i < amountOfPartyMembers; i++)
+        {
+            int randomCharacterIndex = Random.Range(0, availableCharacters.Count);
+
+            eventCharacters.Add(activeCharacters[randomCharacterIndex]);
+            availableCharacters.RemoveAt(randomCharacterIndex);
+        }
+
+        return eventCharacters;
+    }
+
     public void ChoiceResultEventTab(ChoiceData givenChoiceData)
     {
         if (isOccurrenceEvent)
         {
-            //Apply the effect here
+            ApplyEventEffect.ApplyAllEffects(givenChoiceData.results[0], activeEventCharacters);
         
             CloseEventTab();
             return;
@@ -133,7 +259,7 @@ public class JourneyLogic : JourneyScript
         choiceButtons[0].GetComponentInChildren<Text>().text = result.resultChoiceText;
         choiceButtons[0].GetComponent<ChoiceButton>().MakeCloseButton();
 
-        //Will apply result to characters here
+        ApplyEventEffect.ApplyAllEffects(result, activeEventCharacters);
     }
 
     public void CloseEventTab()
