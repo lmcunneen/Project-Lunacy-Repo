@@ -7,11 +7,6 @@ public class SettingsObject : MonoBehaviour
 {
     public static uint numberOfPartyMembers = 4;
 
-    private void Start()
-    {
-        
-    }
-
     public static void SaveToSettingsObject(uint partySizeRef)
     {
         numberOfPartyMembers = partySizeRef;

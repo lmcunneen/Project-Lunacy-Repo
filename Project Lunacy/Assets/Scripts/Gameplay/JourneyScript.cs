@@ -6,11 +6,16 @@ public class JourneyScript : MonoBehaviour
 {
     //This is a parent class that all journey-related scripts derive from.
 
-    public enum ConsitutionType
+    public enum EffectType
     {
+        //Constitution Types
         Vitality,
         Willpower,
         Sanity,
+        //Special Event Types
+        JourneyLength,
+        AddNewCharacter,
+        //No effect
         None
     }
 

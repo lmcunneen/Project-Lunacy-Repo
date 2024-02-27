@@ -67,27 +67,27 @@ public class CharacterBars : JourneyScript
 
     private void RandomEffect() //Used for randomly simulating outcomes
     {
-        ConsitutionType randomType = (ConsitutionType)Random.Range(0, 3);
+        EffectType randomType = (EffectType)Random.Range(0, 3);
         int multiplier = Random.Range(0, 2) * 2 - 1; //Random positive or negative
         int randomValue = Random.Range(1, 4) * 15 * multiplier;
 
         SetConstitutionValue(randomType, randomValue);
     }
 
-    public int GetConstitutionValue(ConsitutionType type)
+    public int GetConstitutionValue(EffectType type)
     {
         switch(type)
         {
-            case ConsitutionType.Vitality:
+            case EffectType.Vitality:
                 return vitalityValue;
 
-            case ConsitutionType.Willpower:
+            case EffectType.Willpower:
                 return willpowerValue;
 
-            case ConsitutionType.Sanity:
+            case EffectType.Sanity:
                 return sanityValue;
 
-            case ConsitutionType.None:
+            case EffectType.None:
                 Debug.LogWarning("The 'None' enum value was passed into GetConsitutionType. Debug if possible");
                 return 0;
 
@@ -97,11 +97,11 @@ public class CharacterBars : JourneyScript
         }
     }
 
-    public void SetConstitutionValue(ConsitutionType type, int value)
+    public void SetConstitutionValue(EffectType type, int value)
     {
         switch(type)
         {
-            case ConsitutionType.Vitality:
+            case EffectType.Vitality:
                 vitalityText.color = (value > 0) ? Color.white : Color.black;
                 willpowerText.color = willpowerColour;
                 sanityText.color = sanityColour;
@@ -109,7 +109,7 @@ public class CharacterBars : JourneyScript
                 vitalityValue = FindNewValue(vitalityValue, value);
                 break;
 
-            case ConsitutionType.Willpower:
+            case EffectType.Willpower:
                 vitalityText.color = vitalityColour;
                 willpowerText.color = (value > 0) ? Color.white : Color.black;
                 sanityText.color = sanityColour;
@@ -117,7 +117,7 @@ public class CharacterBars : JourneyScript
                 willpowerValue = FindNewValue(willpowerValue, value);
                 break;
 
-            case ConsitutionType.Sanity:
+            case EffectType.Sanity:
                 vitalityText.color = vitalityColour;
                 willpowerText.color = willpowerColour;
                 sanityText.color = (value > 0) ? Color.white : Color.black;
@@ -125,7 +125,7 @@ public class CharacterBars : JourneyScript
                 sanityValue = FindNewValue(sanityValue, value);
                 break;
 
-            case ConsitutionType.None: //Set nothing
+            case EffectType.None: //Set nothing
                 Debug.Log("Nothing was set, as 'None' was passed into SetConsitutionValue");
                 break;
 

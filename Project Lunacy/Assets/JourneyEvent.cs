@@ -11,13 +11,19 @@ public struct ChoiceData
 }
 
 [Serializable]
-public struct ChoiceResult
+public class ChoiceResult
 {
     public string resultName;
     [TextArea(10, 30)]
     public string resultDescription;
     public string resultChoiceText;
-    public JourneyScript.ConsitutionType effectType;
+    public List<ChoiceEffect> effects = new List<ChoiceEffect> ( new ChoiceEffect[1]);
+}
+
+[Serializable]
+public struct ChoiceEffect
+{
+    public JourneyScript.EffectType effectType;
     [Range(-100, 100)]
     public int effectAmount;
 }
@@ -36,6 +42,8 @@ public class JourneyEvent : ScriptableObject
     
     public string displayName;
     public EventSize eventSize;
+
+    [Header("----Parameters----")]
     [TextArea(10,30)]
     public string description;
     public List<ChoiceData> choiceList;
