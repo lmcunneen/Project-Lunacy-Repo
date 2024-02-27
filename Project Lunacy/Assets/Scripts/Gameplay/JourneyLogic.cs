@@ -93,6 +93,11 @@ public class JourneyLogic : JourneyScript
             isOccurrenceEvent = true;
             Debug.Log(journeyEvent + " is detected as an Occurrence Event. If this is wrong, fix immediately!");
         }
+
+        else
+        {
+            isOccurrenceEvent = false;
+        }
     }
 
     public void ChoiceResultEventTab(ChoiceData givenChoiceData)
@@ -100,7 +105,7 @@ public class JourneyLogic : JourneyScript
         if (isOccurrenceEvent)
         {
             //Apply the effect here
-
+        
             CloseEventTab();
             return;
         }
