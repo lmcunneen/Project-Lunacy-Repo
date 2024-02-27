@@ -103,7 +103,7 @@ public class CharacterBars : JourneyScript
 
     public void SetConstitutionValue(EffectType type, int value)
     {
-        Debug.Log("Con Set for " + gameObject.name + "!");
+        //Debug.Log("Con Set for " + gameObject.name + "!");
         
         switch(type)
         {

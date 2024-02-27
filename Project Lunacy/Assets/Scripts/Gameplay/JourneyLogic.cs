@@ -117,6 +117,14 @@ public class JourneyLogic : JourneyScript
 
         activeEventCharacters = AssignCharactersToEvent(randomEventSize);
 
+        if (activeEventCharacters == null)
+        {
+            var soloEventSize = JourneyEvent.EventSize.Solo;
+            randomEventPool = GetJourneyEventList(soloEventSize);
+
+            activeEventCharacters = AssignCharactersToEvent(soloEventSize);
+        }
+
         int randomIndex = Random.Range(0, randomEventPool.Count);
 
         return randomEventPool[randomIndex];
@@ -210,7 +218,7 @@ public class JourneyLogic : JourneyScript
         if (activeCharacters.Count < amountOfPartyMembers && !isWholeParty) //This doesn't change the event, only the participants. Fix whenever you get the chance
         {
             Debug.LogWarning("Chosen Event Size too large for current party! Resetting to One!");
-            amountOfPartyMembers = 1;
+            return null;
         }
         
         List<CharacterBars> availableCharacters = activeCharacters;
