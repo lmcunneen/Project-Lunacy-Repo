@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: EatSlug
   m_EditorClassIdentifier: 
   displayName: Delectable Grub
+  eventSize: 0
   description: 'Your party finds a slug on the ground, and he looks quite tasty.
 
 
@@ -28,13 +29,15 @@ MonoBehaviour:
         <Character> dies
         doing this by the way. Good one genius...'
       resultChoiceText: Oh well
-      effectType: 0
-      effectAmount: -100
+      effects:
+      - effectType: 0
+        effectAmount: -100
     - resultName: Wait, it worked?
       resultDescription: "Huh, guess that actually worked out. \n\nI wouldn't try
         your luck again if I were you..."
       resultChoiceText: Sally forth
-      effectType: 0
-      effectAmount: 20
+      effects:
+      - effectType: 0
+        effectAmount: 0
   - choiceName: Leave it be
     results: []

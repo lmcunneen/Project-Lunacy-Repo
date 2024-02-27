@@ -17,4 +17,10 @@ MonoBehaviour:
   description: 
   choiceList:
   - choiceName: 
-    results: []
+    results:
+    - resultName: 
+      resultDescription: 
+      resultChoiceText: 
+      effects:
+      - effectType: 0
+        effectAmount: -100

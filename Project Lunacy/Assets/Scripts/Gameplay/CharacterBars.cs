@@ -59,7 +59,7 @@ public class CharacterBars : JourneyScript
     {
         if (stepCountStatic >= currentStepCount + 1) //Resets text colour after one step
         {
-            RandomEffect();
+            //RandomEffect();
             
             vitalityText.color = vitalityColour;
             willpowerText.color = willpowerColour;
@@ -103,6 +103,8 @@ public class CharacterBars : JourneyScript
 
     public void SetConstitutionValue(EffectType type, int value)
     {
+        Debug.Log("Con Set for " + gameObject.name + "!");
+        
         switch(type)
         {
             case EffectType.Vitality:
