@@ -13,12 +13,6 @@ public class JourneyLogic : JourneyScript
     
     [SerializeField] private float stepTimeSeconds = 1f;
 
-    [Header("Event UI References")]
-    [SerializeField] private GameObject eventPanel;
-    [SerializeField] private Text eventNameText;
-    [SerializeField] private Text descriptionText;
-    [SerializeField] private List<Button> choiceButtons = new();
-
     public List<JourneyEvent> activeEvents = new();
     
     private List<JourneyEvent> activeSoloEvents = new();
@@ -27,13 +21,17 @@ public class JourneyLogic : JourneyScript
     private List<JourneyEvent> activeQuadrioEvents = new();
     private List<JourneyEvent> activeWholePartyEvents = new();
 
+    private EventScreen eventScreenComponent;
+
     private bool isWaiting = false;
     private bool eventIsChosen = false;
-    private bool isOccurrenceEvent = false;
+    public static bool isOccurrenceEvent = false;
 
     void Start()
     {
-        eventPanel.SetActive(false);
+        eventScreenComponent = GetComponent<EventScreen>();
+
+        eventScreenComponent.CloseEventTab();
         
         foreach (var character in FindObjectsByType<CharacterBars>(FindObjectsSortMode.InstanceID))
         {
@@ -68,11 +66,11 @@ public class JourneyLogic : JourneyScript
         {
             eventIsChosen = true;
 
-            eventPanel.SetActive(true);
+            eventScreenComponent.OpenEventTab();
 
             JourneyEvent chosenEvent = GenerateRandomEvent();
 
-            DisplayEvent(chosenEvent);
+            eventScreenComponent.DisplayEvent(chosenEvent);
 
             StopAllCoroutines();
         }
@@ -155,39 +153,6 @@ public class JourneyLogic : JourneyScript
         }
     }
 
-    private void DisplayEvent(JourneyEvent journeyEvent)
-    {
-        eventNameText.text = journeyEvent.displayName;
-        descriptionText.text = journeyEvent.description;
-
-        foreach (var button in choiceButtons)
-        {
-            button.gameObject.SetActive(false);
-        }
-
-        for (int i = 0; i < journeyEvent.choiceList.Count; i++)
-        {
-            GameObject activeButton = choiceButtons[i].gameObject;
-            ChoiceData choiceData = journeyEvent.choiceList[i];
-
-            activeButton.SetActive(true);
-            activeButton.GetComponentInChildren<Text>().text = choiceData.choiceName;
-
-            activeButton.GetComponent<ChoiceButton>().SetButtonChoiceData(choiceData);
-        }
-
-        if (journeyEvent.choiceList.Count == 1 && journeyEvent.choiceList[0].results.Count == 1) //If there's only one option and result, do the following...
-        {
-            isOccurrenceEvent = true;
-            Debug.Log(journeyEvent + " is detected as an Occurrence Event. If this is wrong, fix immediately!");
-        }
-
-        else
-        {
-            isOccurrenceEvent = false;
-        }
-    }
-
     private List<CharacterBars> AssignCharactersToEvent(JourneyEvent.EventSize givenEventSize)
     {
         switch(givenEventSize)
@@ -260,25 +225,14 @@ public class JourneyLogic : JourneyScript
         int randomIndex = Random.Range(0, givenChoiceData.results.Count);
         ChoiceResult result = givenChoiceData.results[randomIndex];
 
-        eventNameText.text = result.resultName;
-        descriptionText.text = result.resultDescription;
-
-        foreach (var button in choiceButtons)
-        {
-            button.gameObject.SetActive(false);
-        }
-
-        choiceButtons[0].gameObject.SetActive(true);
-
-        choiceButtons[0].GetComponentInChildren<Text>().text = result.resultChoiceText;
-        choiceButtons[0].GetComponent<ChoiceButton>().MakeCloseButton();
+        eventScreenComponent.DisplayChoiceResult(result);
 
         ApplyEventEffect.ApplyAllEffects(result, activeEventCharacters);
     }
 
     public void CloseEventTab()
     {
-        eventPanel.SetActive(false);
+        eventScreenComponent.CloseEventTab();
 
         List<CharacterBars> listReference = new();
         

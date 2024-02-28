@@ -16,11 +16,43 @@ MonoBehaviour:
   eventSize: 2
   description: 
   choiceList:
-  - choiceName: 
+  - choiceName: Random Increase
     results:
-    - resultName: 
+    - resultName: Vitality increase
       resultDescription: 
       resultChoiceText: 
       effects:
       - effectType: 0
-        effectAmount: -100
+        effectAmount: 15
+    - resultName: Willpower increase
+      resultDescription: 
+      resultChoiceText: 
+      effects:
+      - effectType: 1
+        effectAmount: 15
+    - resultName: Sanity increase
+      resultDescription: 
+      resultChoiceText: 
+      effects:
+      - effectType: 2
+        effectAmount: 15
+  - choiceName: Random Decrease
+    results:
+    - resultName: Vitality decrease
+      resultDescription: 
+      resultChoiceText: 
+      effects:
+      - effectType: 0
+        effectAmount: -15
+    - resultName: Willpower decrease
+      resultDescription: 
+      resultChoiceText: 
+      effects:
+      - effectType: 1
+        effectAmount: -15
+    - resultName: Sanity decrease
+      resultDescription: 
+      resultChoiceText: 
+      effects:
+      - effectType: 2
+        effectAmount: -15

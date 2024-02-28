@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class CharacterBars : JourneyScript
 {
-    private int vitalityValue = 100;
-    private int willpowerValue = 100;
-    private int sanityValue = 100;
+    private int vitalityValue = 50;
+    private int willpowerValue = 50;
+    private int sanityValue = 50;
 
     [SerializeField] private Text nameText;
     [SerializeField] private Text vitalityText;
