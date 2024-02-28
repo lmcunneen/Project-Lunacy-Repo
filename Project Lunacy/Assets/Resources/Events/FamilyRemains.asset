@@ -13,18 +13,20 @@ MonoBehaviour:
   m_Name: FamilyRemains
   m_EditorClassIdentifier: 
   displayName: Horrible Sight
-  description: '<Character> was searching for some wood when stumbling upon the remains
+  eventSize: 0
+  description: '<Char1> was searching for some wood when stumbling upon the remains
     of a family, with their skin pale and eyes bleached with fear.
 
 
     The sighting
-    of this has shaken up <Character> quite a bit, and they won''t tell the others
-    what <they> saw.'
+    of this has shaken up <Char1> quite a bit, and they won''t tell the others what
+    <they> saw.'
   choiceList:
   - choiceName: Continue
     results:
     - resultName: mm
       resultDescription: mm
       resultChoiceText: mm
-      effectType: 1
-      effectAmount: -25
+      effects:
+      - effectType: 0
+        effectAmount: 0

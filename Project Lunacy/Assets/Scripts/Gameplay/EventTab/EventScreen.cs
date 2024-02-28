@@ -53,10 +53,10 @@ public class EventScreen : MonoBehaviour
         }
     }
 
-    public void DisplayChoiceResult(ChoiceResult givenResult)
+    public void DisplayChoiceResult(ChoiceResult givenResult, List<CharacterBars> eventCharacters)
     {
         eventNameText.text = givenResult.resultName;
-        descriptionText.text = givenResult.resultDescription;
+        descriptionText.text = ReplaceEventText.InsertCharactersInDescription(givenResult.resultDescription, eventCharacters);
 
         foreach (var button in choiceButtons)
         {

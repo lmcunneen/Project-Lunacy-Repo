@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Quadrio Event
   eventSize: 3
-  description: 
+  description: '<Char1>
+
+    <Char2>
+
+    <Char3>
+
+    <Char4>'
   choiceList:
   - choiceName: Random Increase
     results:

@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Whole Party Event
   eventSize: 4
-  description: 
+  description: '<Char1>
+
+    <Char2>
+
+    <Char3>
+
+    <Char4>'
   choiceList:
   - choiceName: Random Increase
     results:

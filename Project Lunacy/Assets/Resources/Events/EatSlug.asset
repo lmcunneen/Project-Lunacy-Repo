@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Delectable Grub
   eventSize: 0
-  description: 'Your party finds a slug on the ground, and he looks quite tasty.
+  description: '<Char1> finds a slug on the ground, and he looks quite tasty.
 
 
     What
@@ -26,7 +26,7 @@ MonoBehaviour:
       resultDescription: 'Why the hell would you do that?
 
 
-        <Character> dies
+        <Char1> dies
         doing this by the way. Good one genius...'
       resultChoiceText: Oh well
       effects:

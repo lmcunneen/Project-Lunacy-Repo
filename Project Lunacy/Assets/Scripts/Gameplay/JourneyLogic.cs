@@ -225,7 +225,7 @@ public class JourneyLogic : JourneyScript
         int randomIndex = Random.Range(0, givenChoiceData.results.Count);
         ChoiceResult result = givenChoiceData.results[randomIndex];
 
-        eventScreenComponent.DisplayChoiceResult(result);
+        eventScreenComponent.DisplayChoiceResult(result, activeEventCharacters);
 
         ApplyEventEffect.ApplyAllEffects(result, activeEventCharacters);
     }

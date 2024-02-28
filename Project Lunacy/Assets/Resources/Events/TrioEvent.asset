@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Trio Event
   eventSize: 2
-  description: 
+  description: '<Char1>
+
+    <Char2>
+
+    <Char3>'
   choiceList:
   - choiceName: Random Increase
     results:

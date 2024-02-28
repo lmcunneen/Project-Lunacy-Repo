@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Duo Event
   eventSize: 1
-  description: 
+  description: '<Char1>
+
+    <Char2>'
   choiceList:
   - choiceName: Random Increase
     results:
