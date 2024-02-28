@@ -161,7 +161,7 @@ public class CharacterBars : JourneyScript
     public void SetName(string givenName)
     {
         characterName = givenName;
-        gameObject.name = characterName + " (Character)";
+        gameObject.name = characterName;
         nameText.text = characterName;
     }
 

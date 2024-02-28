@@ -70,7 +70,7 @@ public class JourneyLogic : JourneyScript
 
             JourneyEvent chosenEvent = GenerateRandomEvent();
 
-            eventScreenComponent.DisplayEvent(chosenEvent);
+            eventScreenComponent.DisplayEvent(chosenEvent, activeEventCharacters);
 
             StopAllCoroutines();
         }

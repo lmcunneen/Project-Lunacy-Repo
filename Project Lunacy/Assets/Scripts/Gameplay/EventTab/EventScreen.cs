@@ -20,10 +20,10 @@ public class EventScreen : MonoBehaviour
         eventPanel.SetActive(true);
     }
     
-    public void DisplayEvent(JourneyEvent journeyEvent)
+    public void DisplayEvent(JourneyEvent journeyEvent, List<CharacterBars> eventCharacters)
     {
         eventNameText.text = journeyEvent.displayName;
-        descriptionText.text = journeyEvent.description;
+        descriptionText.text = ReplaceEventText.InsertCharactersInDescription(journeyEvent.description, eventCharacters);
 
         foreach (var button in choiceButtons)
         {
