@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class JourneyLogic : JourneyScript
 {
     [SerializeField] private uint stepCountDisplay;
+    [SerializeField] private int dayCountDisplay;
 
     //STATIC VARIABLES:
     public List<CharacterBars> activeCharacters = new List<CharacterBars>();
@@ -30,6 +31,8 @@ public class JourneyLogic : JourneyScript
 
     void Start()
     {
+        dayCountDisplay = dayCountStatic;
+        
         eventScreenComponent = GetComponent<EventScreen>();
         deathScreenComponent = GetComponent<DeathScreen>();
 
@@ -55,13 +58,15 @@ public class JourneyLogic : JourneyScript
     {
         if (AllCharactersDead())
         {
-            deathScreenComponent.OpenDeathScreen(1);
+            deathScreenComponent.OpenDeathScreen();
             this.enabled = false;
         }
         
         if (!isWaiting)
         {
             StartCoroutine(IncrementStep());
+
+            UpdateDayCount();
         }
 
         if (stepCountStatic % 5 != 0)
@@ -261,6 +266,21 @@ public class JourneyLogic : JourneyScript
     private bool AllCharactersDead()
     {
         return (activeCharacters.Count <= 0 && activeEventCharacters.Count <= 0 && !eventIsChosen);
+    }
+
+    private void UpdateDayCount()
+    {
+        if (stepCountStatic % 60 == 0)
+        {
+            dayCountDisplay--;
+            dayCountStatic--;
+        }
+
+        if (dayCountStatic <= 0)
+        {
+            Debug.Log("Journey is complete!");
+            this.enabled = false;
+        }
     }
 
     IEnumerator IncrementStep()

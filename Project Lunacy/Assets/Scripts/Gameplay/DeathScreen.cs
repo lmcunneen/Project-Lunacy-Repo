@@ -14,11 +14,20 @@ public class DeathScreen : MonoBehaviour
         deathMenu.SetActive(false);
     }
 
-    public void OpenDeathScreen(int distanceLeft)
+    public void OpenDeathScreen()
     {
         deathMenu.SetActive(true);
-        distanceText.text = distanceText.text.Replace("<Dist>", distanceLeft.ToString());
         distanceText.text = distanceText.text.Replace("<Step>", (JourneyScript.stepCountStatic - 1).ToString());
+
+        if (JourneyScript.dayCountStatic > 1)
+        {
+            distanceText.text = distanceText.text.Replace("<Days>", (JourneyScript.dayCountStatic).ToString());
+        }
+
+        else
+        {
+            distanceText.text = distanceText.text.Replace("were <Days> days", "was " + (JourneyScript.dayCountStatic) + " day");
+        }
     }
 
     public void RestartPlaythrough()

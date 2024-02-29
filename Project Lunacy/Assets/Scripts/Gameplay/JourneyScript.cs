@@ -21,5 +21,6 @@ public class JourneyScript : MonoBehaviour
 
     //STATIC VARIABLES - Set by JourneyLogic, can be read by all JourneyScript child classes
     public static uint stepCountStatic;
+    public static int dayCountStatic = 7;
     public static List<CharacterBars> activeCharactersStatic = new();
 }

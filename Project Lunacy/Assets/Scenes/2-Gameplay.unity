@@ -1314,7 +1314,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'There was <Dist> left in the journey.
+  m_Text: 'There were <Days> days left in the journey.
 
     <Step> steps were taken.'
 --- !u!222 &679705655
@@ -1342,8 +1342,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000019073, y: 38}
-  m_SizeDelta: {x: 1091.7795, y: 239.8196}
+  m_AnchoredPosition: {x: -0.000019073, y: 36}
+  m_SizeDelta: {x: 1185.968, y: 239.8196}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &791985204
 GameObject:
@@ -1408,15 +1408,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stepCountDisplay: 0
+  dayCountDisplay: 0
   activeCharacters: []
   activeEventCharacters: []
   stepTimeSeconds: 1
   activeEvents:
-  - {fileID: 11400000, guid: 07784389e77b08b419a442c72f266f06, type: 2}
   - {fileID: 11400000, guid: 5fe217215359cdd40b916e3fabcbc4af, type: 2}
-  - {fileID: 11400000, guid: f3c400ba6f15e1f4da691c2b77a6b811, type: 2}
-  - {fileID: 11400000, guid: 3d4e7854f10323e4cbfbc48de9f1372b, type: 2}
   - {fileID: 11400000, guid: 885af2e315d2d954abf5a8b22e540a16, type: 2}
+  - {fileID: 11400000, guid: 3d4e7854f10323e4cbfbc48de9f1372b, type: 2}
+  - {fileID: 11400000, guid: 07784389e77b08b419a442c72f266f06, type: 2}
+  - {fileID: 11400000, guid: f3c400ba6f15e1f4da691c2b77a6b811, type: 2}
+  - {fileID: 11400000, guid: 3f2dce77b1c89c040a54af028dbf067d, type: 2}
 --- !u!114 &791985208
 MonoBehaviour:
   m_ObjectHideFlags: 0
