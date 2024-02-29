@@ -34,6 +34,6 @@ public class StartSettings : MonoBehaviour
     {
         SettingsObject.SaveToSettingsObject((uint)partySizeInt);
 
-        SceneManager.LoadScene("Gameplay");
+        SceneManager.LoadScene("2-Gameplay");
     }
 }

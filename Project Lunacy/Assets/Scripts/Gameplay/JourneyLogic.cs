@@ -22,6 +22,7 @@ public class JourneyLogic : JourneyScript
     private List<JourneyEvent> activeWholePartyEvents = new();
 
     private EventScreen eventScreenComponent;
+    private DeathScreen deathScreenComponent;
 
     private bool isWaiting = false;
     private bool eventIsChosen = false;
@@ -30,6 +31,7 @@ public class JourneyLogic : JourneyScript
     void Start()
     {
         eventScreenComponent = GetComponent<EventScreen>();
+        deathScreenComponent = GetComponent<DeathScreen>();
 
         eventScreenComponent.CloseEventTab();
         
@@ -51,6 +53,12 @@ public class JourneyLogic : JourneyScript
 
     void Update()
     {
+        if (AllCharactersDead())
+        {
+            deathScreenComponent.OpenDeathScreen(1);
+            this.enabled = false;
+        }
+        
         if (!isWaiting)
         {
             StartCoroutine(IncrementStep());
@@ -110,7 +118,7 @@ public class JourneyLogic : JourneyScript
     
     private JourneyEvent GenerateRandomEvent()
     {
-        JourneyEvent.EventSize randomEventSize = (JourneyEvent.EventSize)Random.Range(0, 4);
+        JourneyEvent.EventSize randomEventSize = (JourneyEvent.EventSize)Random.Range(0, 5);
         List<JourneyEvent> randomEventPool = GetJourneyEventList(randomEventSize);
 
         activeEventCharacters = AssignCharactersToEvent(randomEventSize);
@@ -248,6 +256,11 @@ public class JourneyLogic : JourneyScript
         }
 
         StartCoroutine(IncrementStep());
+    }
+
+    private bool AllCharactersDead()
+    {
+        return (activeCharacters.Count <= 0 && activeEventCharacters.Count <= 0 && !eventIsChosen);
     }
 
     IEnumerator IncrementStep()

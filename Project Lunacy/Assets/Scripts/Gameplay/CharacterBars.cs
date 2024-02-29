@@ -57,7 +57,7 @@ public class CharacterBars : JourneyScript
 
     private void ChangeBarColours()
     {
-        if (stepCountStatic >= currentStepCount + 1) //Resets text colour after one step
+        if (stepCountStatic >= currentStepCount + 2) //Resets text colour after two steps
         {
             //RandomEffect();
             
