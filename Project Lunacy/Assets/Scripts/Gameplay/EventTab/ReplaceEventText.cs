@@ -25,9 +25,9 @@ public class ReplaceEventText : MonoBehaviour
 
             case 4:
                 description = description.Replace("<Char1>", eventCharacters[0].name);
-                description = description.Replace("<Char1>", eventCharacters[1].name);
-                description = description.Replace("<Char1>", eventCharacters[2].name);
-                description = description.Replace("<Char1>", eventCharacters[3].name);
+                description = description.Replace("<Char2>", eventCharacters[1].name);
+                description = description.Replace("<Char3>", eventCharacters[2].name);
+                description = description.Replace("<Char4>", eventCharacters[3].name);
                 return description;
 
             default:
