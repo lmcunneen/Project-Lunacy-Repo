@@ -16,15 +16,15 @@ public class ApplyEventEffect : JourneyScript
       5 - None
      */
 
-    public static void ApplyAllEffects(ChoiceResult givenResult, List<CharacterBars> activeEventCharacters)
+    public static void ApplyAllEffects(ChoiceResult givenResult, List<CharacterBars> activeEventCharacters, JourneyLogic journeyLogic)
     {
         foreach (var effect in givenResult.effects)
         {
-            ApplyTypeAndValue(effect.effectType, effect.effectAmount, activeEventCharacters);
+            ApplyTypeAndValue(effect.effectType, effect.effectAmount, activeEventCharacters, journeyLogic);
         }
     }
     
-    private static void ApplyTypeAndValue(EffectType givenType, int givenValue, List<CharacterBars> effectedCharacters)
+    private static void ApplyTypeAndValue(EffectType givenType, int givenValue, List<CharacterBars> effectedCharacters, JourneyLogic journeyLogic)
     {
         switch(givenType)
         {
@@ -40,7 +40,7 @@ public class ApplyEventEffect : JourneyScript
                 break;
 
             case EffectType.JourneyLength:
-                //Apply effect here
+                journeyLogic.ChangeDayLength(givenValue);
                 break;
 
             case EffectType.AddNewCharacter:

@@ -13,6 +13,9 @@ public class JourneyLogic : JourneyScript
     public List<CharacterBars> activeEventCharacters = new();
     
     [SerializeField] private float stepTimeSeconds = 1f;
+    [Range(0f, 200f)]
+    [SerializeField] private int dayLengthBase = 60;
+    public static int dayLengthMod;
 
     public List<JourneyEvent> activeEvents = new();
     
@@ -29,9 +32,12 @@ public class JourneyLogic : JourneyScript
     private bool eventIsChosen = false;
     public static bool isOccurrenceEvent = false;
 
+    public static int dayStartStepCount;
+
     void Start()
     {
         dayCountDisplay = dayCountStatic;
+        dayLengthMod = dayLengthBase;
         
         eventScreenComponent = GetComponent<EventScreen>();
         deathScreenComponent = GetComponent<DeathScreen>();
@@ -222,7 +228,7 @@ public class JourneyLogic : JourneyScript
     {
         if (isOccurrenceEvent)
         {
-            ApplyEventEffect.ApplyAllEffects(givenChoiceData.results[0], activeEventCharacters);
+            ApplyEventEffect.ApplyAllEffects(givenChoiceData.results[0], activeEventCharacters, this);
         
             CloseEventTab();
             return;
@@ -240,7 +246,7 @@ public class JourneyLogic : JourneyScript
 
         eventScreenComponent.DisplayChoiceResult(result, activeEventCharacters);
 
-        ApplyEventEffect.ApplyAllEffects(result, activeEventCharacters);
+        ApplyEventEffect.ApplyAllEffects(result, activeEventCharacters, this);
     }
 
     public void CloseEventTab()
@@ -270,10 +276,13 @@ public class JourneyLogic : JourneyScript
 
     private void UpdateDayCount()
     {
-        if (stepCountStatic % 60 == 0)
+        if ((stepCountStatic - dayStartStepCount) >= dayLengthMod)
         {
             dayCountDisplay--;
             dayCountStatic--;
+
+            dayLengthMod = dayLengthBase;
+            dayStartStepCount = (int)stepCountStatic;
         }
 
         if (dayCountStatic <= 0)
@@ -281,6 +290,11 @@ public class JourneyLogic : JourneyScript
             Debug.Log("Journey is complete!");
             this.enabled = false;
         }
+    }
+
+    public void ChangeDayLength(int lengthModification)
+    {
+        dayLengthMod += lengthModification;
     }
 
     IEnumerator IncrementStep()

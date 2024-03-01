@@ -7,7 +7,6 @@ public class PartyManager : JourneyScript
 {
     [SerializeField] private GameObject characterPrefab;
     [SerializeField] private HorizontalLayoutGroup characterTab;
-    [SerializeField] private List<CharacterBars> activeCharactersDisplay;
 
     private List<string> names = new List<string>
         { "Jackson", "Declan", "Rhys", "Castiel", "Joseph", "Mitchell", "Neo", "Elias", "Daniel", "Matthew", "Natalie", "Vicki", "Roger",
@@ -21,11 +20,6 @@ public class PartyManager : JourneyScript
         {
             GenerateCharacter();
         }
-    }
-
-    void Update()
-    {
-        
     }
 
     private void GenerateCharacter()

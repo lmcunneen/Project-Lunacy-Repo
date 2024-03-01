@@ -26,20 +26,23 @@ MonoBehaviour:
     - resultName: Miraculously Safe!
       resultDescription: The party was all safe during the night and feel well rested.
       resultChoiceText: Continue
-      effectType: 1
-      effectAmount: 20
+      effects:
+      - effectType: 0
+        effectAmount: 0
     - resultName: Ransacked!
-      resultDescription: "<Character> comes to and finds many of things have been
-        taken whilst they were sleeping! \n\nThere's an air of regret that lingers
-        over the party."
+      resultDescription: "<Char1> comes to and finds many of things have been taken
+        whilst they were sleeping! \n\nThere's an air of regret that lingers over
+        the party."
       resultChoiceText: Continue
-      effectType: 1
-      effectAmount: -30
+      effects:
+      - effectType: 1
+        effectAmount: -15
   - choiceName: Take guard shifts
     results:
     - resultName: All safe!
       resultDescription: The party got through the night, albeit more tired than
         ideal.
       resultChoiceText: Continue
-      effectType: 1
-      effectAmount: -10
+      effects:
+      - effectType: 0
+        effectAmount: 0

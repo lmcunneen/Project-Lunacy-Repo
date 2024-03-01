@@ -36,6 +36,12 @@ MonoBehaviour:
       effects:
       - effectType: 2
         effectAmount: 15
+    - resultName: Journey length increase
+      resultDescription: 
+      resultChoiceText: 
+      effects:
+      - effectType: 3
+        effectAmount: 15
   - choiceName: Random Decrease
     results:
     - resultName: Vitality decrease
@@ -55,4 +61,10 @@ MonoBehaviour:
       resultChoiceText: 
       effects:
       - effectType: 2
+        effectAmount: -15
+    - resultName: Journey length decrease
+      resultDescription: 
+      resultChoiceText: 
+      effects:
+      - effectType: 3
         effectAmount: -15

@@ -28,5 +28,5 @@ MonoBehaviour:
       resultDescription: mm
       resultChoiceText: mm
       effects:
-      - effectType: 0
-        effectAmount: 0
+      - effectType: 2
+        effectAmount: -20

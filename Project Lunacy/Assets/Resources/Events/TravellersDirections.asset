@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Helping Hand..?
   eventSize: 0
-  description: 'As <Character> steps out to assess where to go, a wayward traveller
-    approaches their cart.
+  description: 'As <Char1> steps out to assess where to go, a wayward traveller approaches
+    their cart.
 
 
-    <Character> asks for directions, but only if they
-    part with some of the party''s food. What does <Pronoun> do?'
+    <Char1> asks for directions, but only if they part with some
+    of the party''s food. What does <Pronoun> do?'
   choiceList:
   - choiceName: Give the supplies
     results:
     - resultName: Clear Path Forward!
-      resultDescription: The traveller informs <Character> on exactly the way to
-        go, cutting down on travel time.
+      resultDescription: The traveller informs <Char1> on exactly the way to go,
+        cutting down on travel time.
       resultChoiceText: Nice!
       effects:
       - effectType: 3

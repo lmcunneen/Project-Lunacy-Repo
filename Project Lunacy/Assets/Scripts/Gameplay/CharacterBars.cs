@@ -108,7 +108,7 @@ public class CharacterBars : JourneyScript
         switch(type)
         {
             case EffectType.Vitality:
-                vitalityText.color = (value > 0) ? Color.white : Color.black;
+                vitalityText.color = SetCounterColour(vitalityColour, value);
                 willpowerText.color = willpowerColour;
                 sanityText.color = sanityColour;
                 
@@ -117,7 +117,7 @@ public class CharacterBars : JourneyScript
 
             case EffectType.Willpower:
                 vitalityText.color = vitalityColour;
-                willpowerText.color = (value > 0) ? Color.white : Color.black;
+                willpowerText.color = SetCounterColour(willpowerColour, value);
                 sanityText.color = sanityColour;
 
                 willpowerValue = FindNewValue(willpowerValue, value);
@@ -126,7 +126,7 @@ public class CharacterBars : JourneyScript
             case EffectType.Sanity:
                 vitalityText.color = vitalityColour;
                 willpowerText.color = willpowerColour;
-                sanityText.color = (value > 0) ? Color.white : Color.black;
+                sanityText.color = SetCounterColour(sanityColour, value);
 
                 sanityValue = FindNewValue(sanityValue, value);
                 break;
@@ -143,6 +143,21 @@ public class CharacterBars : JourneyScript
         currentStepCount = stepCountStatic; //Aligns it with current
     }
 
+    private Color SetCounterColour(Color originalColour, int value)
+    {
+        if (value > 0)
+        {
+            return Color.white;
+        }
+
+        if (value < 0)
+        {
+            return Color.black;
+        }
+
+        return originalColour;
+    }
+    
     private int FindNewValue(int currentValue, int add)
     {
         int output = currentValue + add;
