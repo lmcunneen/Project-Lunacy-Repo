@@ -22,12 +22,12 @@ public class JSONExport : JourneyScript
         data.sanityData.Add(sanityValue);
     }
 
-    public void CommitToFile()
+    public void CommitToFile(string name)
     {
         string json = JsonUtility.ToJson(data);
 
         string pathName = Application.persistentDataPath + 
-            "/DataExports/characterData" + DateTime.Now.DayOfYear + '-' + DateTime.Now.Hour + '-' + 
+            "/DataExports/characterData" + name + '-' + DateTime.Now.DayOfYear + '-' + DateTime.Now.Hour + '-' + 
                DateTime.Now.Minute + '-' + DateTime.Now.Second + ".json";
 
         if (!File.Exists(pathName))

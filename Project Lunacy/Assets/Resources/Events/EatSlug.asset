@@ -38,6 +38,6 @@ MonoBehaviour:
       resultChoiceText: Sally forth
       effects:
       - effectType: 0
-        effectAmount: 0
+        effectAmount: 10
   - choiceName: Leave it be
     results: []

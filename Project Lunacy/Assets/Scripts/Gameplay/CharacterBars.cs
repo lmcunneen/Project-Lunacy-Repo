@@ -49,7 +49,7 @@ public class CharacterBars : JourneyScript
             
             RemoveFromActiveCharacters();
 
-            jsonComponent.CommitToFile();
+            jsonComponent.CommitToFile(characterName);
 
             Destroy(gameObject);
         }
