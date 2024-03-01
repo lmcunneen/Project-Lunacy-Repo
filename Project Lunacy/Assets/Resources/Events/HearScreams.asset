@@ -23,6 +23,29 @@ MonoBehaviour:
   - choiceName: Follow the voice
     results: []
   - choiceName: Look for extra help
-    results: []
+    results:
+    - resultName: Find and Rescue!
+      resultDescription: 'Around the corner are other people who aid you in the search
+        for the screaming voice, but just as you all approach the clifface, it seemingly
+        dissapears.
+
+
+        Despite that, seeing new faces has still lifted the
+        spirits of the party slightly.'
+      resultChoiceText: Continue forth
+      effects:
+      - effectType: 1
+        effectAmount: 5
+    - resultName: All Alone
+      resultDescription: 'The party looks around only to find themselves alone, and
+        the voice seems to peter off before anyone can seem to trace it.
+
+
+        And
+        yet the voice seems to echo in the party''s mind.'
+      resultChoiceText: Continue
+      effects:
+      - effectType: 2
+        effectAmount: -10
   - choiceName: Run away
     results: []

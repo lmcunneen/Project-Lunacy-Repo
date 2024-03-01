@@ -36,4 +36,11 @@ public class StartSettings : MonoBehaviour
 
         SceneManager.LoadScene("2-Gameplay");
     }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quit Game!");
+
+        Application.Quit();
+    }
 }

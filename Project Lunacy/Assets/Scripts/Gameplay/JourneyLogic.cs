@@ -26,7 +26,7 @@ public class JourneyLogic : JourneyScript
     private List<JourneyEvent> activeWholePartyEvents = new();
 
     private EventScreen eventScreenComponent;
-    private DeathScreen deathScreenComponent;
+    private GameEndScreens gameEndScreensComponent;
 
     private bool isWaiting = false;
     private bool eventIsChosen = false;
@@ -36,11 +36,13 @@ public class JourneyLogic : JourneyScript
 
     void Start()
     {
+        dayStartStepCount = 0;
+        
         dayCountDisplay = dayCountStatic;
         dayLengthMod = dayLengthBase;
         
         eventScreenComponent = GetComponent<EventScreen>();
-        deathScreenComponent = GetComponent<DeathScreen>();
+        gameEndScreensComponent = GetComponent<GameEndScreens>();
 
         eventScreenComponent.CloseEventTab();
         
@@ -64,7 +66,7 @@ public class JourneyLogic : JourneyScript
     {
         if (AllCharactersDead())
         {
-            deathScreenComponent.OpenDeathScreen();
+            gameEndScreensComponent.OpenDeathScreen();
             this.enabled = false;
         }
         
@@ -288,6 +290,11 @@ public class JourneyLogic : JourneyScript
         if (dayCountStatic <= 0)
         {
             Debug.Log("Journey is complete!");
+
+            gameEndScreensComponent.OpenWinScreen();
+            eventScreenComponent.CloseEventTab();
+
+            eventScreenComponent.enabled = false;
             this.enabled = false;
         }
     }

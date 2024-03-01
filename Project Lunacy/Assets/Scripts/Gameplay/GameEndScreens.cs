@@ -4,14 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class DeathScreen : MonoBehaviour
+public class GameEndScreens : MonoBehaviour
 {
     [SerializeField] private GameObject deathMenu;
+    [SerializeField] private GameObject winMenu;
     [SerializeField] private Text distanceText;
 
     void Start()
     {
         deathMenu.SetActive(false);
+        winMenu.SetActive(false);
     }
 
     public void OpenDeathScreen()
@@ -28,6 +30,11 @@ public class DeathScreen : MonoBehaviour
         {
             distanceText.text = distanceText.text.Replace("were <Days> days", "was " + (JourneyScript.dayCountStatic) + " day");
         }
+    }
+
+    public void OpenWinScreen()
+    {
+        winMenu.SetActive(true);
     }
 
     public void RestartPlaythrough()
