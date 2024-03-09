@@ -9,7 +9,7 @@ public class PartyManager : JourneyScript
     [SerializeField] private HorizontalLayoutGroup characterTab;
 
     private List<string> names = new List<string>
-        { "Jackson", "Declan", "Rhys", "Castiel", "Joseph", "Mitchell", "Neo", "Elias", "Daniel", "Matthew", "Natalie", "Vicki", "Roger",
+        { "Jackson", "Declan", "Rhys", "Castiel", "Joseph", "Mitchell", "Neo", "Elias", "Daniel", "Matthew", "Natalie", "Pamela", "Vicki", "Roger",
           "David", "Jason", "Casper", "Connor", "Ashton", "Mateo", "Mars", "Pheobe", "Hayley", "Callum", "Georgia", "James", "Jet", "John", 
           "Paul", "George", "Ringo", "Thomas", "Pete", "Billy", "Tai", "Noah", "Marcus", "Alex", "Josh", "Jack", "Torr", "Elliot", "Cooper",
           "Martin", "Olivia", "Cynthia", "Stephen", "Corey", "Oscar", "Zac", "Tarek", "Aiden", "Jacob", "Atilla", "Konrad", "Ben", "Lerm"};
